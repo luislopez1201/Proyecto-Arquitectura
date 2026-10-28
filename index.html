@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRONOS // ATELIER ARQUITECTURA — Portafolio Arquitectónico & Visor 3D</title>
+    <meta name="description" content="Estudio de arquitectura contemporánea, diseño paramétrico y visualización 3D interactiva en tiempo real. Desarrollado con Laravel/PHP y compatible con GitHub Pages.">
+
+    <!-- Tipografías Editoriales y Técnicas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Hoja de Estilos Arquitectónica (Rutas relativas compatibles con Laravel y GitHub Pages) -->
+    <link rel="stylesheet" href="assets/css/architecture.css">
+</head>
+<body>
+    <!-- Rejilla Técnica de Fondo -->
+    <div class="arch-grid-overlay" aria-hidden="true"></div>
+
+    <!-- Barra de Navegación -->
+    <header class="navbar">
+        <a href="#" class="brand">
+            <div class="brand-mark">K//A</div>
+            <div class="brand-text">
+                <span class="brand-title">KRONOS ATELIER</span>
+                <span class="brand-sub">ARQUITECTURA · BIM 3D · INGENIERÍA</span>
+            </div>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#visor-3d">Escena 3D</a></li>
+            <li><a href="#obras">Proyectos</a></li>
+            <li><a href="#metodologia">Metodología BIM</a></li>
+            <li><a href="#contacto">Estudio</a></li>
+        </ul>
+
+        <a href="#obras" class="nav-badge">LARAVEL + THREE.JS // GH-PAGES READY</a>
+    </header>
+
+    <!-- =======================================================================
+         PORTADA HERO CON ESCENA 3D INTERACTIVA EN TIEMPO REAL (THREE.JS)
+         ======================================================================= -->
+    <section class="hero-3d-section" id="visor-3d">
+        <!-- Lienzo 3D WebGL -->
+        <div id="arch-canvas-container" aria-label="Modelo arquitectónico 3D interactivo"></div>
+
+        <!-- Columna Izquierda: Narrativa Arquitectónica -->
+        <div class="hero-content">
+            <div class="tech-pill">
+                <span class="pulse-dot"></span>
+                <span>VISOR WEBGL 3D INTERACTIVO · TIEMPO REAL</span>
+            </div>
+
+            <h1 class="hero-title">
+                Espacios que desafían la gravedad
+                <span>y dialogan con la luz.</span>
+            </h1>
+
+            <p class="hero-description">
+                Arquitectura Paramétrica, Brutalismo Cálido &amp; Ingeniería Bioclimática. Explora el modelo volumétrico 3D arrastrando con el cursor, alterna a vista de planos (Wireframe), despieza los niveles estructurales o simula el asoleamiento real.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#obras" class="btn-primary">Explorar Obras Selectas ↓</a>
+                <a href="#metodologia" class="btn-outline">Arquitectura Laravel + 3D</a>
+            </div>
+        </div>
+
+        <!-- Columna Derecha: Consola HUD de Control Arquitectónico 3D -->
+        <aside class="hud-3d-panel" aria-label="Controles del modelo 3D">
+            <div class="hud-header">
+                <span class="hud-title">// CONSOLA BIM 3D · LOD 400</span>
+                <span class="hud-coords" id="hud-coords">X:0.0m  Y:0.0m</span>
+            </div>
+
+            <div class="hud-controls-grid">
+                <button type="button" class="hud-btn" id="btn-3d-wireframe">
+                    <span>[01] MODO PLANO CAD</span>
+                    <span>⊞</span>
+                </button>
+                <button type="button" class="hud-btn" id="btn-3d-explode">
+                    <span>[02] CORTE EXPLOTADO</span>
+                    <span>⇅</span>
+                </button>
+                <button type="button" class="hud-btn active" id="btn-3d-rotate">
+                    <span>[03] ÓRBITA ACTIVA</span>
+                    <span>↻</span>
+                </button>
+                <button type="button" class="hud-btn" id="btn-3d-reset">
+                    <span>[04] REINICIAR VISTA</span>
+                    <span>⌖</span>
+                </button>
+            </div>
+
+            <div class="hud-slider-group">
+                <div class="hud-slider-label">
+                    <span>ESTUDIO DE ASOLEAMIENTO (HORA SOLAR)</span>
+                    <strong id="sun-time-label">17:45 · Hora Dorada</strong>
+                </div>
+                <input
+                    type="range"
+                    id="sun-angle-slider"
+                    class="hud-slider"
+                    min="6"
+                    max="22"
+                    step="0.25"
+                    value="17.75"
+                >
+            </div>
+
+            <div class="hud-preset-bar">
+                <button type="button" class="preset-chip active" data-preset-3d="cantilever_villa">
+                    Pabellón Aura (Voladizo)
+                </button>
+                <button type="button" class="preset-chip" data-preset-3d="diagrid_tower">
+                    Torre Prisma
+                </button>
+                <button type="button" class="preset-chip" data-preset-3d="cultural_pavilion">
+                    Museo Horizonte
+                </button>
+            </div>
+        </aside>
+    </section>
+
+    <!-- =======================================================================
+         INDICADORES DEL ESTUDIO
+         ======================================================================= -->
+    <section class="stats-strip">
+                    <div class="stat-item">
+                <div class="stat-value">48+</div>
+                <div class="stat-label">Proyectos Construidos</div>
+                <div class="stat-detail">En 9 países de Iberoamérica y Europa</div>
+            </div>
+                    <div class="stat-item">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Metodología BIM 3D</div>
+                <div class="stat-detail">Coordinación paramétrica LOD 400</div>
+            </div>
+                    <div class="stat-item">
+                <div class="stat-value">16</div>
+                <div class="stat-label">Premios Internacionales</div>
+                <div class="stat-detail">Bienales de Arquitectura y Sostenibilidad</div>
+            </div>
+                    <div class="stat-item">
+                <div class="stat-value">Net-Zero</div>
+                <div class="stat-label">Compromiso 2030</div>
+                <div class="stat-detail">Diseño bioclimático de huella neutra</div>
+            </div>
+            </section>
+
+    <!-- =======================================================================
+         CATÁLOGO INTERACTIVO DE PROYECTOS ARQUITECTÓNICOS
+         ======================================================================= -->
+    <section class="section-container" id="obras">
+        <div class="section-header">
+            <div>
+                <div class="section-eyebrow">// PORTAFOLIO CURADO 2024 — 2026</div>
+                <h2 class="section-title">Obras & Proyectos Arquitectónicos</h2>
+            </div>
+
+            <div class="filter-tabs" role="tablist">
+                <button type="button" class="filter-btn active" data-filter="todos">Todos (6)</button>
+                <button type="button" class="filter-btn" data-filter="residencial">Residencial</button>
+                <button type="button" class="filter-btn" data-filter="corporativo">Corporativo</button>
+                <button type="button" class="filter-btn" data-filter="cultural">Cultural</button>
+                <button type="button" class="filter-btn" data-filter="urbanismo">Urbanismo</button>
+            </div>
+        </div>
+
+        <div class="projects-grid">
+                            <article class="project-card" data-category="residencial">
+                    <div>
+                        <div class="project-image-wrap">
+                            <img
+                                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                                alt="Pabellón Aura &amp; Residencia Kengo"
+                                loading="lazy"
+                            >
+                            <span class="project-code-badge">ARQ-01</span>
+                            <span class="project-status-badge">Construido</span>
+                        </div>
+
+                        <div class="project-body">
+                            <div class="project-meta-top">
+                                <span>Residencial Contemporáneo</span>
+                                <span>Valle de Bravo, México · 2026</span>
+                            </div>
+
+                            <h3 class="project-title">Pabellón Aura &amp; Residencia Kengo</h3>
+                            <p class="project-summary">Volúmenes en voladizo de hormigón arquitectónico aparente y madera carbonizada que levitan sobre una pendiente boscosa con espejo de agua perimetral.</p>
+
+                            <div class="project-metrics-row">
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">11.4 m</span>
+                                        <span class="metric-lbl">Luz Libre Voladizo</span>
+                                    </div>
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">+42%</span>
+                                        <span class="metric-lbl">Eficiencia Térmica</span>
+                                    </div>
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">68%</span>
+                                        <span class="metric-lbl">Huella Acristalada</span>
+                                    </div>
+                                                            </div>
+
+                            <div class="project-card-actions">
+                                <button
+                                    type="button"
+                                    class="btn-card-3d"
+                                    data-preset-3d="cantilever_villa"
+                                >
+                                     Cargar Volumetría 3D ↑
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn-card-details"
+                                    data-project='{&quot;id&quot;:&quot;pabellon-aura&quot;,&quot;code&quot;:&quot;ARQ-01&quot;,&quot;title&quot;:&quot;Pabellón Aura &amp; Residencia Kengo&quot;,&quot;category&quot;:&quot;residencial&quot;,&quot;category_label&quot;:&quot;Residencial Contemporáneo&quot;,&quot;location&quot;:&quot;Valle de Bravo, México&quot;,&quot;year&quot;:&quot;2026&quot;,&quot;area&quot;:&quot;680 m²&quot;,&quot;levels&quot;:&quot;3 Niveles + Terraza Mirador&quot;,&quot;client&quot;:&quot;Colección Privada&quot;,&quot;status&quot;:&quot;Construido&quot;,&quot;featured&quot;:true,&quot;preset_3d&quot;:&quot;cantilever_villa&quot;,&quot;summary&quot;:&quot;Volúmenes en voladizo de hormigón arquitectónico aparente y madera carbonizada que levitan sobre una pendiente boscosa con espejo de agua perimetral.&quot;,&quot;materials&quot;:[&quot;Hormigón Blanco Aparente&quot;,&quot;Acero Corten&quot;,&quot;Cristal Low-E Triple&quot;,&quot;Roble Ahumado&quot;],&quot;sustainability&quot;:&quot;Certificación LEED Platinum · Captación Pluvial 100% · Geotermia Horizontal&quot;,&quot;image&quot;:&quot;https:\/\/images.unsplash.com\/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;,&quot;gallery&quot;:[&quot;https:\/\/images.unsplash.com\/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;,&quot;https:\/\/images.unsplash.com\/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;],&quot;metrics&quot;:{&quot;Luz Libre Voladizo&quot;:&quot;11.4 m&quot;,&quot;Eficiencia Térmica&quot;:&quot;+42%&quot;,&quot;Huella Acristalada&quot;:&quot;68%&quot;}}'
+                                >
+                                    Ficha Técnica
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                            <article class="project-card" data-category="corporativo">
+                    <div>
+                        <div class="project-image-wrap">
+                            <img
+                                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                                alt="Torre Bioclimática Prisma Nord"
+                                loading="lazy"
+                            >
+                            <span class="project-code-badge">ARQ-02</span>
+                            <span class="project-status-badge">En Ejecución</span>
+                        </div>
+
+                        <div class="project-body">
+                            <div class="project-meta-top">
+                                <span>Corporativo &amp; Uso Mixto</span>
+                                <span>Madrid, España · 2026</span>
+                            </div>
+
+                            <h3 class="project-title">Torre Bioclimática Prisma Nord</h3>
+                            <p class="project-summary">Exoesqueleto estructural diagrid de aluminio anodizado con jardines verticales en espiral que reducen la radiación solar directa en un 55%.</p>
+
+                            <div class="project-metrics-row">
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">55%</span>
+                                        <span class="metric-lbl">Ahorro Energético</span>
+                                    </div>
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">78.5 m</span>
+                                        <span class="metric-lbl">Altura Total</span>
+                                    </div>
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">2,100 m²</span>
+                                        <span class="metric-lbl">Terraza Verde</span>
+                                    </div>
+                                                            </div>
+
+                            <div class="project-card-actions">
+                                <button
+                                    type="button"
+                                    class="btn-card-3d"
+                                    data-preset-3d="diagrid_tower"
+                                >
+                                     Cargar Volumetría 3D ↑
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn-card-details"
+                                    data-project='{&quot;id&quot;:&quot;torre-prisma-nord&quot;,&quot;code&quot;:&quot;ARQ-02&quot;,&quot;title&quot;:&quot;Torre Bioclimática Prisma Nord&quot;,&quot;category&quot;:&quot;corporativo&quot;,&quot;category_label&quot;:&quot;Corporativo &amp; Uso Mixto&quot;,&quot;location&quot;:&quot;Madrid, España&quot;,&quot;year&quot;:&quot;2026&quot;,&quot;area&quot;:&quot;14,200 m²&quot;,&quot;levels&quot;:&quot;18 Niveles + Atrio Público&quot;,&quot;client&quot;:&quot;Nordic Urban Group&quot;,&quot;status&quot;:&quot;En Ejecución&quot;,&quot;featured&quot;:true,&quot;preset_3d&quot;:&quot;diagrid_tower&quot;,&quot;summary&quot;:&quot;Exoesqueleto estructural diagrid de aluminio anodizado con jardines verticales en espiral que reducen la radiación solar directa en un 55%.&quot;,&quot;materials&quot;:[&quot;Exoesqueleto Diagrid&quot;,&quot;Doble Piel Ventilada&quot;,&quot;Hormigón Postensado&quot;,&quot;Cobre Oxidado&quot;],&quot;sustainability&quot;:&quot;Net Zero Energy · Fachada Cinética Fotovoltaica · Ventilación Cruzada Inducida&quot;,&quot;image&quot;:&quot;https:\/\/images.unsplash.com\/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;,&quot;gallery&quot;:[&quot;https:\/\/images.unsplash.com\/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;],&quot;metrics&quot;:{&quot;Ahorro Energético&quot;:&quot;55%&quot;,&quot;Altura Total&quot;:&quot;78.5 m&quot;,&quot;Terraza Verde&quot;:&quot;2,100 m²&quot;}}'
+                                >
+                                    Ficha Técnica
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                            <article class="project-card" data-category="cultural">
+                    <div>
+                        <div class="project-image-wrap">
+                            <img
+                                src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                                alt="Centro Cultural Horizonte del Pacífico"
+                                loading="lazy"
+                            >
+                            <span class="project-code-badge">ARQ-03</span>
+                            <span class="project-status-badge">Premio Bienal 2025</span>
+                        </div>
+
+                        <div class="project-body">
+                            <div class="project-meta-top">
+                                <span>Cultural &amp; Público</span>
+                                <span>Valparaíso, Chile · 2025</span>
+                            </div>
+
+                            <h3 class="project-title">Centro Cultural Horizonte del Pacífico</h3>
+                            <p class="project-summary">Una gran cubierta plegada transitable que emerge del acantilado como extensión topográfica, albergando salas de exposición bañadas por luz cenital.</p>
+
+                            <div class="project-metrics-row">
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">34.0 m</span>
+                                        <span class="metric-lbl">Claro Sin Columnas</span>
+                                    </div>
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">650 pax</span>
+                                        <span class="metric-lbl">Aforo Auditorio</span>
+                                    </div>
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">3,800 m²</span>
+                                        <span class="metric-lbl">Plaza Pública</span>
+                                    </div>
+                                                            </div>
+
+                            <div class="project-card-actions">
+                                <button
+                                    type="button"
+                                    class="btn-card-3d"
+                                    data-preset-3d="cultural_pavilion"
+                                >
+                                     Cargar Volumetría 3D ↑
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn-card-details"
+                                    data-project='{&quot;id&quot;:&quot;museo-horizonte-marino&quot;,&quot;code&quot;:&quot;ARQ-03&quot;,&quot;title&quot;:&quot;Centro Cultural Horizonte del Pacífico&quot;,&quot;category&quot;:&quot;cultural&quot;,&quot;category_label&quot;:&quot;Cultural &amp; Público&quot;,&quot;location&quot;:&quot;Valparaíso, Chile&quot;,&quot;year&quot;:&quot;2025&quot;,&quot;area&quot;:&quot;5,450 m²&quot;,&quot;levels&quot;:&quot;2 Niveles Subterráneos + Cubierta Plaza&quot;,&quot;client&quot;:&quot;Fundación Artes del Sur&quot;,&quot;status&quot;:&quot;Premio Bienal 2025&quot;,&quot;featured&quot;:true,&quot;preset_3d&quot;:&quot;cultural_pavilion&quot;,&quot;summary&quot;:&quot;Una gran cubierta plegada transitable que emerge del acantilado como extensión topográfica, albergando salas de exposición bañadas por luz cenital.&quot;,&quot;materials&quot;:[&quot;Concreto Puzolánico&quot;,&quot;Madera Laminada CLT&quot;,&quot;Vidrio Estructural Curvo&quot;,&quot;Piedra Basáltica&quot;],&quot;sustainability&quot;:&quot;Inercia Térmica Marina · Iluminación 100% Natural Diurna · Acústica Paramétrica&quot;,&quot;image&quot;:&quot;https:\/\/images.unsplash.com\/photo-1513694203232-719a280e022f?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;,&quot;gallery&quot;:[&quot;https:\/\/images.unsplash.com\/photo-1513694203232-719a280e022f?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;],&quot;metrics&quot;:{&quot;Claro Sin Columnas&quot;:&quot;34.0 m&quot;,&quot;Aforo Auditorio&quot;:&quot;650 pax&quot;,&quot;Plaza Pública&quot;:&quot;3,800 m²&quot;}}'
+                                >
+                                    Ficha Técnica
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                            <article class="project-card" data-category="residencial">
+                    <div>
+                        <div class="project-image-wrap">
+                            <img
+                                src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                                alt="Casa Monolito del Desierto"
+                                loading="lazy"
+                            >
+                            <span class="project-code-badge">ARQ-04</span>
+                            <span class="project-status-badge">Construido</span>
+                        </div>
+
+                        <div class="project-body">
+                            <div class="project-meta-top">
+                                <span>Residencial Contemporáneo</span>
+                                <span>San Pedro de Atacama, Chile · 2025</span>
+                            </div>
+
+                            <h3 class="project-title">Casa Monolito del Desierto</h3>
+                            <p class="project-summary">Muros de tierra apisonada (tapial) pigmentada con minerales locales que se funden con la cordillera y protegen patios interiores de agua y sombra.</p>
+
+                            <div class="project-metrics-row">
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">0.65 m</span>
+                                        <span class="metric-lbl">Espesor Muro Tapial</span>
+                                    </div>
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">14 hrs</span>
+                                        <span class="metric-lbl">Amortiguación Térmica</span>
+                                    </div>
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">18 kWp</span>
+                                        <span class="metric-lbl">Generación Solar</span>
+                                    </div>
+                                                            </div>
+
+                            <div class="project-card-actions">
+                                <button
+                                    type="button"
+                                    class="btn-card-3d"
+                                    data-preset-3d="desert_monolith"
+                                >
+                                     Cargar Volumetría 3D ↑
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn-card-details"
+                                    data-project='{&quot;id&quot;:&quot;casa-monolito-arena&quot;,&quot;code&quot;:&quot;ARQ-04&quot;,&quot;title&quot;:&quot;Casa Monolito del Desierto&quot;,&quot;category&quot;:&quot;residencial&quot;,&quot;category_label&quot;:&quot;Residencial Contemporáneo&quot;,&quot;location&quot;:&quot;San Pedro de Atacama, Chile&quot;,&quot;year&quot;:&quot;2025&quot;,&quot;area&quot;:&quot;490 m²&quot;,&quot;levels&quot;:&quot;1 Nivel Semienterrado&quot;,&quot;client&quot;:&quot;Privado&quot;,&quot;status&quot;:&quot;Construido&quot;,&quot;featured&quot;:false,&quot;preset_3d&quot;:&quot;desert_monolith&quot;,&quot;summary&quot;:&quot;Muros de tierra apisonada (tapial) pigmentada con minerales locales que se funden con la cordillera y protegen patios interiores de agua y sombra.&quot;,&quot;materials&quot;:[&quot;Tierra Apisonada (Tapial)&quot;,&quot;Acero Negro Mate&quot;,&quot;Travertino Envejecido&quot;,&quot;Cedro Natural&quot;],&quot;sustainability&quot;:&quot;Arquitectura Pasiva · Cero Climatización Artificial · Autonomía Solar Total&quot;,&quot;image&quot;:&quot;https:\/\/images.unsplash.com\/photo-1600596542815-ffad4c1539a9?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;,&quot;gallery&quot;:[&quot;https:\/\/images.unsplash.com\/photo-1600596542815-ffad4c1539a9?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;],&quot;metrics&quot;:{&quot;Espesor Muro Tapial&quot;:&quot;0.65 m&quot;,&quot;Amortiguación Térmica&quot;:&quot;14 hrs&quot;,&quot;Generación Solar&quot;:&quot;18 kWp&quot;}}'
+                                >
+                                    Ficha Técnica
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                            <article class="project-card" data-category="urbanismo">
+                    <div>
+                        <div class="project-image-wrap">
+                            <img
+                                src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                                alt="Laboratorio &amp; Invernadero Urbano Nexus"
+                                loading="lazy"
+                            >
+                            <span class="project-code-badge">ARQ-05</span>
+                            <span class="project-status-badge">En Desarrollo BIM LOD 400</span>
+                        </div>
+
+                        <div class="project-body">
+                            <div class="project-meta-top">
+                                <span>Urbanismo &amp; Paisaje</span>
+                                <span>Medellín, Colombia · 2026</span>
+                            </div>
+
+                            <h3 class="project-title">Laboratorio &amp; Invernadero Urbano Nexus</h3>
+                            <p class="project-summary">Sistema modular de anillos y terrazas botánicas con estructura híbrida de guadua laminada y acero reciclado que regenera el corredor ecológico urbano.</p>
+
+                            <div class="project-metrics-row">
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">+140</span>
+                                        <span class="metric-lbl">Especies Nativas</span>
+                                    </div>
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">Autosuficiente</span>
+                                        <span class="metric-lbl">Huella Hídrica</span>
+                                    </div>
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">-38% peso</span>
+                                        <span class="metric-lbl">Estructura Ligera</span>
+                                    </div>
+                                                            </div>
+
+                            <div class="project-card-actions">
+                                <button
+                                    type="button"
+                                    class="btn-card-3d"
+                                    data-preset-3d="stepped_campus"
+                                >
+                                     Cargar Volumetría 3D ↑
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn-card-details"
+                                    data-project='{&quot;id&quot;:&quot;campus-botanico-nexus&quot;,&quot;code&quot;:&quot;ARQ-05&quot;,&quot;title&quot;:&quot;Laboratorio &amp; Invernadero Urbano Nexus&quot;,&quot;category&quot;:&quot;urbanismo&quot;,&quot;category_label&quot;:&quot;Urbanismo &amp; Paisaje&quot;,&quot;location&quot;:&quot;Medellín, Colombia&quot;,&quot;year&quot;:&quot;2026&quot;,&quot;area&quot;:&quot;8,900 m²&quot;,&quot;levels&quot;:&quot;4 Niveles Terrazas Conectadas&quot;,&quot;client&quot;:&quot;Consorcio BioCiudad&quot;,&quot;status&quot;:&quot;En Desarrollo BIM LOD 400&quot;,&quot;featured&quot;:false,&quot;preset_3d&quot;:&quot;stepped_campus&quot;,&quot;summary&quot;:&quot;Sistema modular de anillos y terrazas botánicas con estructura híbrida de guadua laminada y acero reciclado que regenera el corredor ecológico urbano.&quot;,&quot;materials&quot;:[&quot;Madera Guadua Laminada&quot;,&quot;ETFE Ultraligero&quot;,&quot;Concreto Permeable&quot;,&quot;Aluminio Reciclado&quot;],&quot;sustainability&quot;:&quot;Captura de CO2 Negativa · Biodigestores In-Situ · Corredor de Polinizadores&quot;,&quot;image&quot;:&quot;https:\/\/images.unsplash.com\/photo-1545324418-cc1a3fa10c00?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;,&quot;gallery&quot;:[&quot;https:\/\/images.unsplash.com\/photo-1545324418-cc1a3fa10c00?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;],&quot;metrics&quot;:{&quot;Especies Nativas&quot;:&quot;+140&quot;,&quot;Huella Hídrica&quot;:&quot;Autosuficiente&quot;,&quot;Estructura Ligera&quot;:&quot;-38% peso&quot;}}'
+                                >
+                                    Ficha Técnica
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                            <article class="project-card" data-category="cultural">
+                    <div>
+                        <div class="project-image-wrap">
+                            <img
+                                src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                                alt="Pabellón Efímero Vortex"
+                                loading="lazy"
+                            >
+                            <span class="project-code-badge">ARQ-06</span>
+                            <span class="project-status-badge">Construido</span>
+                        </div>
+
+                        <div class="project-body">
+                            <div class="project-meta-top">
+                                <span>Cultural &amp; Público</span>
+                                <span>Ciudad de México, México · 2026</span>
+                            </div>
+
+                            <h3 class="project-title">Pabellón Efímero Vortex</h3>
+                            <p class="project-summary">Pabellón desmontable de geometría reglada con costillas de aluminio reciclado y espejos de agua que reflejan la bóveda celeste.</p>
+
+                            <div class="project-metrics-row">
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">12 días</span>
+                                        <span class="metric-lbl">Tiempo de Montaje</span>
+                                    </div>
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">480 uds</span>
+                                        <span class="metric-lbl">Piezas CNC Únicas</span>
+                                    </div>
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">100%</span>
+                                        <span class="metric-lbl">Reciclabilidad</span>
+                                    </div>
+                                                            </div>
+
+                            <div class="project-card-actions">
+                                <button
+                                    type="button"
+                                    class="btn-card-3d"
+                                    data-preset-3d="vortex_pavilion"
+                                >
+                                     Cargar Volumetría 3D ↑
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn-card-details"
+                                    data-project='{&quot;id&quot;:&quot;galeria-vortex-minimal&quot;,&quot;code&quot;:&quot;ARQ-06&quot;,&quot;title&quot;:&quot;Pabellón Efímero Vortex&quot;,&quot;category&quot;:&quot;cultural&quot;,&quot;category_label&quot;:&quot;Cultural &amp; Público&quot;,&quot;location&quot;:&quot;Ciudad de México, México&quot;,&quot;year&quot;:&quot;2026&quot;,&quot;area&quot;:&quot;1,120 m²&quot;,&quot;levels&quot;:&quot;Planta Libre Continua&quot;,&quot;client&quot;:&quot;Festival Internacional de Diseño&quot;,&quot;status&quot;:&quot;Construido&quot;,&quot;featured&quot;:false,&quot;preset_3d&quot;:&quot;vortex_pavilion&quot;,&quot;summary&quot;:&quot;Pabellón desmontable de geometría reglada con costillas de aluminio reciclado y espejos de agua que reflejan la bóveda celeste.&quot;,&quot;materials&quot;:[&quot;Perfiles CNC de Aluminio&quot;,&quot;Membrana Acústica Tensada&quot;,&quot;Espejo de Agua Negro&quot;,&quot;Iluminación OLED&quot;],&quot;sustainability&quot;:&quot;100% Desmontable y Reutilizable · Cero Residuos de Obra (Montaje en Seco)&quot;,&quot;image&quot;:&quot;https:\/\/images.unsplash.com\/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;,&quot;gallery&quot;:[&quot;https:\/\/images.unsplash.com\/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;],&quot;metrics&quot;:{&quot;Tiempo de Montaje&quot;:&quot;12 días&quot;,&quot;Piezas CNC Únicas&quot;:&quot;480 uds&quot;,&quot;Reciclabilidad&quot;:&quot;100%&quot;}}'
+                                >
+                                    Ficha Técnica
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                    </div>
+    </section>
+
+    <!-- =======================================================================
+         METODOLOGÍA BIM & ARQUITECTURA HÍBRIDA LARAVEL -> GITHUB PAGES
+         ======================================================================= -->
+    <section class="section-container" id="metodologia">
+        <div class="section-header">
+            <div>
+                <div class="section-eyebrow">// FLUJO DE TRABAJO DIGITAL</div>
+                <h2 class="section-title">Ingeniería Paramétrica & Despliegue Continuo</h2>
+            </div>
+        </div>
+
+        <div class="bim-grid">
+            <div class="bim-card">
+                <div class="bim-step">FASE 01 // CONCEPCIÓN PARAMÉTRICA</div>
+                <h3>Simulación Solar y Volumetría 3D</h3>
+                <p>
+                    Cada proyecto nace de un análisis riguroso del sitio, vientos dominantes y radiación solar. Nuestro visor WebGL en portada permite evaluar voladizos y sombras antes de cimentar.
+                </p>
+            </div>
+
+            <div class="bim-card">
+                <div class="bim-step">FASE 02 // COORDINACIÓN BIM LOD 400</div>
+                <h3>Materialidad Honesta y Precisión</h3>
+                <p>
+                    Combinamos hormigón aparente, madera laminada CLT, acero corten y cristal de baja emisividad con tolerancias milimétricas controladas mediante gemelos digitales.
+                </p>
+            </div>
+
+            <div class="bim-card">
+                <div class="bim-step">FASE 03 // ARQUITECTURA WEB LARAVEL + GH PAGES</div>
+                <h3>Código PHP/Blade con Exportación Estática</h3>
+                <p>
+                    Gestiona tus proyectos en <code>app/Models/Project.php</code> y vistas en <code>resources/views/portfolio.blade.php</code>. Con <code>php artisan export:static</code> o GitHub Actions se publica gratis en GitHub Pages.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- =======================================================================
+         MODAL DE FICHA TÉCNICA ARQUITECTÓNICA
+         ======================================================================= -->
+    <div class="modal-backdrop" id="project-modal" role="dialog" aria-modal="true">
+        <div class="modal-sheet">
+            <div class="modal-img-col">
+                <img id="modal-img" src="" alt="Vista previa del proyecto">
+            </div>
+            <div class="modal-info-col">
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
+                        <span class="section-eyebrow" id="modal-code" style="margin:0;"></span>
+                        <button type="button" class="modal-close-btn" id="modal-close-btn">CERRAR [ESC]</button>
+                    </div>
+                    <h3 class="section-title" id="modal-title" style="font-size:1.75rem; margin-bottom:0.4rem;"></h3>
+                    <p id="modal-location" style="font-family:var(--font-mono); font-size:0.82rem; color:var(--accent-gold); margin-bottom:1.1rem;"></p>
+                    <p id="modal-summary" style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:1.2rem;"></p>
+
+                    <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">
+                        Sistema Constructivo & Materiales:
+                    </div>
+                    <div class="tag-list" id="modal-materials"></div>
+
+                    <div style="padding:0.9rem; background:rgba(201,166,107,0.08); border-left:2px solid var(--accent-gold); font-size:0.84rem;">
+                        <strong style="color:var(--accent-gold); display:block; font-family:var(--font-mono); font-size:0.74rem;">DESEMPEÑO BIOCLIMÁTICO:</strong>
+                        <span id="modal-sustain"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =======================================================================
+         PIE DE PÁGINA / CONTACTO
+         ======================================================================= -->
+    <footer class="footer" id="contacto">
+        <div>
+            <strong style="color:var(--text-primary);">KRONOS // ATELIER ARQUITECTURA</strong><br>
+            <span>Ciudad de México · Madrid · Valparaíso — contacto@kronos-atelier.arch</span>
+        </div>
+        <div>
+            <span>Desarrollado con PHP / Laravel Blade + Three.js WebGL · Listo para GitHub Pages</span>
+        </div>
+    </footer>
+
+    <!-- Three.js CDN + Escena Arquitectónica 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="assets/js/arch-scene-3d.js"></script>
+</body>
+</html>

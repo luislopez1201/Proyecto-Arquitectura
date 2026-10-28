@@ -1,0 +1,103 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * CLI Artisan para Desarrollo Local y Exportación Estática a GitHub Pages.
+ *
+ * Comandos disponibles:
+ *   php artisan serve          -> Levanta el servidor de desarrollo en http://localhost:8000
+ *   php artisan export:static  -> Compila las vistas Blade/PHP y assets en /docs y /dist e index.html
+ */
+
+spl_autoload_register(function ($class) {
+    $prefix = 'App\\';
+    $base_dir = __DIR__ . '/app/';
+    $len = strlen($prefix);
+    if (strncmp($prefix, $class, $len) !== 0) {
+        return;
+    }
+    $relative_class = substr($class, $len);
+    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
+    if (file_exists($file)) {
+        require $file;
+    }
+});
+
+$command = $argv[1] ?? 'help';
+
+function copyDirectory(string $src, string $dst): void
+{
+    if (!is_dir($src)) {
+        return;
+    }
+    if (!is_dir($dst)) {
+        mkdir($dst, 0777, true);
+    }
+    $items = scandir($src);
+    foreach ($items as $item) {
+        if ($item === '.' || $item === '..') {
+            continue;
+        }
+        $srcPath = $src . DIRECTORY_SEPARATOR . $item;
+        $dstPath = $dst . DIRECTORY_SEPARATOR . $item;
+        if (is_dir($srcPath)) {
+            copyDirectory($srcPath, $dstPath);
+        } else {
+            copy($srcPath, $dstPath);
+        }
+    }
+}
+
+switch ($command) {
+    case 'export:static':
+    case 'build':
+        echo "============================================================\n";
+        echo "  LARAVEL STATIC EXPORTER -> GITHUB PAGES BUILDER\n";
+        echo "============================================================\n";
+
+        $controller = new \App\Http\Controllers\PortfolioController();
+        $html = $controller->index();
+
+        // Guardar en raíz (index.html) y en /docs (estándar GitHub Pages)
+        file_put_contents(__DIR__ . '/index.html', $html);
+        file_put_contents(__DIR__ . '/.nojekyll', '');
+
+        $docsDir = __DIR__ . '/docs';
+        if (!is_dir($docsDir)) {
+            mkdir($docsDir, 0777, true);
+        }
+        file_put_contents($docsDir . '/index.html', $html);
+        file_put_contents($docsDir . '/.nojekyll', '');
+
+        // Exportar API JSON estática de proyectos
+        $apiDir = $docsDir . '/api';
+        if (!is_dir($apiDir)) {
+            mkdir($apiDir, 0777, true);
+        }
+        file_put_contents(
+            $apiDir . '/projects.json',
+            json_encode(\App\Models\Project::all(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+        );
+
+        // Copiar assets de public/assets a ./assets y ./docs/assets
+        copyDirectory(__DIR__ . '/public/assets', __DIR__ . '/assets');
+        copyDirectory(__DIR__ . '/public/assets', $docsDir . '/assets');
+
+        echo "[OK] Vista Blade/PHP compilada en ./index.html y ./docs/index.html\n";
+        echo "[OK] Assets 3D (Three.js, CSS, JS) sincronizados para GitHub Pages.\n";
+        echo "[OK] Archivo .nojekyll generado.\n";
+        break;
+
+    case 'serve':
+        $port = $argv[2] ?? '8000';
+        echo "Iniciando servidor Laravel/PHP en http://localhost:{$port} ...\n";
+        passthru("php -S localhost:{$port} -t public public/index.php");
+        break;
+
+    default:
+        echo "Uso:\n";
+        echo "  php artisan serve           Inicia servidor local en http://localhost:8000\n";
+        echo "  php artisan export:static   Genera versión estática para GitHub Pages\n";
+        break;
+}
+

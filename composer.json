@@ -1,0 +1,20 @@
+{
+    "name": "arquitectura/atelier-3d-portfolio",
+    "type": "project",
+    "description": "Plataforma web moderna de arquitectura con visor 3D interactivo (Three.js) en estructura Laravel/Blade y exportador estático para GitHub Pages.",
+    "keywords": ["laravel", "architecture", "threejs", "webgl", "portfolio", "github-pages"],
+    "license": "MIT",
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "scripts": {
+        "serve": "php -S localhost:8000 -t public",
+        "build:static": "php artisan export:static"
+    }
+}
+

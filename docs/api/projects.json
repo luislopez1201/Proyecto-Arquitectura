@@ -1,0 +1,195 @@
+[
+    {
+        "id": "pabellon-aura",
+        "code": "ARQ-01",
+        "title": "Pabellón Aura & Residencia Kengo",
+        "category": "residencial",
+        "category_label": "Residencial Contemporáneo",
+        "location": "Valle de Bravo, México",
+        "year": "2026",
+        "area": "680 m²",
+        "levels": "3 Niveles + Terraza Mirador",
+        "client": "Colección Privada",
+        "status": "Construido",
+        "featured": true,
+        "preset_3d": "cantilever_villa",
+        "summary": "Volúmenes en voladizo de hormigón arquitectónico aparente y madera carbonizada que levitan sobre una pendiente boscosa con espejo de agua perimetral.",
+        "materials": [
+            "Hormigón Blanco Aparente",
+            "Acero Corten",
+            "Cristal Low-E Triple",
+            "Roble Ahumado"
+        ],
+        "sustainability": "Certificación LEED Platinum · Captación Pluvial 100% · Geotermia Horizontal",
+        "image": "https:\/\/images.unsplash.com\/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+        "gallery": [
+            "https:\/\/images.unsplash.com\/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+            "https:\/\/images.unsplash.com\/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85"
+        ],
+        "metrics": {
+            "Luz Libre Voladizo": "11.4 m",
+            "Eficiencia Térmica": "+42%",
+            "Huella Acristalada": "68%"
+        }
+    },
+    {
+        "id": "torre-prisma-nord",
+        "code": "ARQ-02",
+        "title": "Torre Bioclimática Prisma Nord",
+        "category": "corporativo",
+        "category_label": "Corporativo & Uso Mixto",
+        "location": "Madrid, España",
+        "year": "2026",
+        "area": "14,200 m²",
+        "levels": "18 Niveles + Atrio Público",
+        "client": "Nordic Urban Group",
+        "status": "En Ejecución",
+        "featured": true,
+        "preset_3d": "diagrid_tower",
+        "summary": "Exoesqueleto estructural diagrid de aluminio anodizado con jardines verticales en espiral que reducen la radiación solar directa en un 55%.",
+        "materials": [
+            "Exoesqueleto Diagrid",
+            "Doble Piel Ventilada",
+            "Hormigón Postensado",
+            "Cobre Oxidado"
+        ],
+        "sustainability": "Net Zero Energy · Fachada Cinética Fotovoltaica · Ventilación Cruzada Inducida",
+        "image": "https:\/\/images.unsplash.com\/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85",
+        "gallery": [
+            "https:\/\/images.unsplash.com\/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85"
+        ],
+        "metrics": {
+            "Ahorro Energético": "55%",
+            "Altura Total": "78.5 m",
+            "Terraza Verde": "2,100 m²"
+        }
+    },
+    {
+        "id": "museo-horizonte-marino",
+        "code": "ARQ-03",
+        "title": "Centro Cultural Horizonte del Pacífico",
+        "category": "cultural",
+        "category_label": "Cultural & Público",
+        "location": "Valparaíso, Chile",
+        "year": "2025",
+        "area": "5,450 m²",
+        "levels": "2 Niveles Subterráneos + Cubierta Plaza",
+        "client": "Fundación Artes del Sur",
+        "status": "Premio Bienal 2025",
+        "featured": true,
+        "preset_3d": "cultural_pavilion",
+        "summary": "Una gran cubierta plegada transitable que emerge del acantilado como extensión topográfica, albergando salas de exposición bañadas por luz cenital.",
+        "materials": [
+            "Concreto Puzolánico",
+            "Madera Laminada CLT",
+            "Vidrio Estructural Curvo",
+            "Piedra Basáltica"
+        ],
+        "sustainability": "Inercia Térmica Marina · Iluminación 100% Natural Diurna · Acústica Paramétrica",
+        "image": "https:\/\/images.unsplash.com\/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=85",
+        "gallery": [
+            "https:\/\/images.unsplash.com\/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=85"
+        ],
+        "metrics": {
+            "Claro Sin Columnas": "34.0 m",
+            "Aforo Auditorio": "650 pax",
+            "Plaza Pública": "3,800 m²"
+        }
+    },
+    {
+        "id": "casa-monolito-arena",
+        "code": "ARQ-04",
+        "title": "Casa Monolito del Desierto",
+        "category": "residencial",
+        "category_label": "Residencial Contemporáneo",
+        "location": "San Pedro de Atacama, Chile",
+        "year": "2025",
+        "area": "490 m²",
+        "levels": "1 Nivel Semienterrado",
+        "client": "Privado",
+        "status": "Construido",
+        "featured": false,
+        "preset_3d": "desert_monolith",
+        "summary": "Muros de tierra apisonada (tapial) pigmentada con minerales locales que se funden con la cordillera y protegen patios interiores de agua y sombra.",
+        "materials": [
+            "Tierra Apisonada (Tapial)",
+            "Acero Negro Mate",
+            "Travertino Envejecido",
+            "Cedro Natural"
+        ],
+        "sustainability": "Arquitectura Pasiva · Cero Climatización Artificial · Autonomía Solar Total",
+        "image": "https:\/\/images.unsplash.com\/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85",
+        "gallery": [
+            "https:\/\/images.unsplash.com\/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85"
+        ],
+        "metrics": {
+            "Espesor Muro Tapial": "0.65 m",
+            "Amortiguación Térmica": "14 hrs",
+            "Generación Solar": "18 kWp"
+        }
+    },
+    {
+        "id": "campus-botanico-nexus",
+        "code": "ARQ-05",
+        "title": "Laboratorio & Invernadero Urbano Nexus",
+        "category": "urbanismo",
+        "category_label": "Urbanismo & Paisaje",
+        "location": "Medellín, Colombia",
+        "year": "2026",
+        "area": "8,900 m²",
+        "levels": "4 Niveles Terrazas Conectadas",
+        "client": "Consorcio BioCiudad",
+        "status": "En Desarrollo BIM LOD 400",
+        "featured": false,
+        "preset_3d": "stepped_campus",
+        "summary": "Sistema modular de anillos y terrazas botánicas con estructura híbrida de guadua laminada y acero reciclado que regenera el corredor ecológico urbano.",
+        "materials": [
+            "Madera Guadua Laminada",
+            "ETFE Ultraligero",
+            "Concreto Permeable",
+            "Aluminio Reciclado"
+        ],
+        "sustainability": "Captura de CO2 Negativa · Biodigestores In-Situ · Corredor de Polinizadores",
+        "image": "https:\/\/images.unsplash.com\/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85",
+        "gallery": [
+            "https:\/\/images.unsplash.com\/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85"
+        ],
+        "metrics": {
+            "Especies Nativas": "+140",
+            "Huella Hídrica": "Autosuficiente",
+            "Estructura Ligera": "-38% peso"
+        }
+    },
+    {
+        "id": "galeria-vortex-minimal",
+        "code": "ARQ-06",
+        "title": "Pabellón Efímero Vortex",
+        "category": "cultural",
+        "category_label": "Cultural & Público",
+        "location": "Ciudad de México, México",
+        "year": "2026",
+        "area": "1,120 m²",
+        "levels": "Planta Libre Continua",
+        "client": "Festival Internacional de Diseño",
+        "status": "Construido",
+        "featured": false,
+        "preset_3d": "vortex_pavilion",
+        "summary": "Pabellón desmontable de geometría reglada con costillas de aluminio reciclado y espejos de agua que reflejan la bóveda celeste.",
+        "materials": [
+            "Perfiles CNC de Aluminio",
+            "Membrana Acústica Tensada",
+            "Espejo de Agua Negro",
+            "Iluminación OLED"
+        ],
+        "sustainability": "100% Desmontable y Reutilizable · Cero Residuos de Obra (Montaje en Seco)",
+        "image": "https:\/\/images.unsplash.com\/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85",
+        "gallery": [
+            "https:\/\/images.unsplash.com\/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85"
+        ],
+        "metrics": {
+            "Tiempo de Montaje": "12 días",
+            "Piezas CNC Únicas": "480 uds",
+            "Reciclabilidad": "100%"
+        }
+    }
+]
