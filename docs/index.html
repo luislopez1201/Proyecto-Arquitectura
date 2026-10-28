@@ -29,6 +29,7 @@
         </a>
 
         <ul class="nav-links">
+            <li><a href="#casa-lopez-seccion">Casa Luis López 3D</a></li>
             <li><a href="#visor-3d">Escena 3D</a></li>
             <li><a href="#obras">Proyectos</a></li>
             <li><a href="#metodologia">Metodología BIM</a></li>
@@ -62,8 +63,8 @@
             </p>
 
             <div class="hero-actions">
-                <a href="#obras" class="btn-primary">Explorar Obras Selectas ↓</a>
-                <a href="#metodologia" class="btn-outline">Arquitectura Laravel + 3D</a>
+                <a href="#casa-lopez-seccion" class="btn-primary">Explorar Casa Luis López 3D ↓</a>
+                <a href="#obras" class="btn-outline">Ver Portafolio de Obras</a>
             </div>
         </div>
 
@@ -110,7 +111,10 @@
             </div>
 
             <div class="hud-preset-bar">
-                <button type="button" class="preset-chip active" data-preset-3d="cantilever_villa">
+                <button type="button" class="preset-chip active" data-preset-3d="casa_luis_lopez">
+                    Casa Luis López (4×13,5m)
+                </button>
+                <button type="button" class="preset-chip" data-preset-3d="cantilever_villa">
                     Pabellón Aura (Voladizo)
                 </button>
                 <button type="button" class="preset-chip" data-preset-3d="diagrid_tower">
@@ -121,6 +125,66 @@
                 </button>
             </div>
         </aside>
+    </section>
+
+    <!-- =======================================================================
+         MAQUETA INTERACTIVA 3D — CASA LUIS LÓPEZ (LOTE 4,00 × 13,50 M)
+         ======================================================================= -->
+    <section class="casa-lopez-showcase" id="casa-lopez-seccion">
+        <div id="casa-lopez-modelo">
+            <div class="viz-row">
+                <div>
+                    <div class="section-eyebrow" style="margin-bottom:0.25rem;">// PLANO Y MAQUETA INTERACTIVA EN TIEMPO REAL · PROYECCIÓN ORTOGRÁFICA</div>
+                    <h2>Casa Luis Lopez · modelo 3D</h2>
+                </div>
+                <span class="cl-badge-lot">Lote rectangular · 4,00 × 13,50 m · construcción 34,20 m²</span>
+            </div>
+
+            <div class="viz-controls">
+                <label class="form-label">Vista Arquitectónica
+                    <select class="form-select" id="cl-vista" aria-label="Vista del modelo">
+                        <option value="planta">Planta rectangular</option>
+                        <option value="maqueta">3D sin perspectiva</option>
+                        <option value="fachada">Fachada a la calle</option>
+                        <option value="dormitorio">Dormitorio y televisor</option>
+                        <option value="social">Sala · comedor · cocina</option>
+                        <option value="cocina">Ventana cocina → garaje</option>
+                        <option value="servicios">Baño · lavandería</option>
+                    </select>
+                </label>
+                <button class="btn" type="button" id="cl-rotate" aria-pressed="false">Girar</button>
+                <button class="btn" type="button" id="cl-in" aria-label="Acercar modelo">+</button>
+                <button class="btn" type="button" id="cl-out" aria-label="Alejar modelo">−</button>
+            </div>
+
+            <div class="cl-quick-views" role="group" aria-label="Accesos rápidos de cámara">
+                <button type="button" class="cl-view-chip active" data-cl-view="planta">Planta rectangular</button>
+                <button type="button" class="cl-view-chip" data-cl-view="maqueta">3D sin perspectiva</button>
+                <button type="button" class="cl-view-chip" data-cl-view="fachada">Fachada a la calle</button>
+                <button type="button" class="cl-view-chip" data-cl-view="dormitorio">Dormitorio y TV</button>
+                <button type="button" class="cl-view-chip" data-cl-view="social">Sala · comedor · cocina</button>
+                <button type="button" class="cl-view-chip" data-cl-view="cocina">Ventana cocina → garaje</button>
+                <button type="button" class="cl-view-chip" data-cl-view="servicios">Baño · lavandería</button>
+            </div>
+
+            <div class="viz-controls cl-options">
+                <label class="form-check"><input id="cl-roof" class="form-check-input" type="checkbox"><span class="form-check-label">Techo</span></label>
+                <label class="form-check"><input id="cl-cut" class="form-check-input" type="checkbox" checked><span class="form-check-label">Recortar muros</span></label>
+                <label class="form-check"><input id="cl-doors" class="form-check-input" type="checkbox" checked><span class="form-check-label">Abrir puertas</span></label>
+                <label class="form-check"><input id="cl-dims" class="form-check-input" type="checkbox"><span class="form-check-label">Cotas y nombres</span></label>
+            </div>
+
+            <div id="cl-scene" role="img" aria-label="Modelo tridimensional de vivienda en lote de 4 por 13,50 metros. De fondo a frente: baño y lavandería, dormitorio con pasillo izquierdo, sala comedor cocina y garaje. Arrastrar para girar; rueda o gesto de pinza para acercar. Las vistas también se seleccionan con los controles.">
+                <div id="cl-loading" class="text-small" role="status">Cargando modelo 3D…</div>
+                <div id="cl-labels" aria-hidden="true"></div>
+            </div>
+
+            <div class="viz-row cl-caption">
+                <span class="text-small text-muted">Arrastra para girar · rueda / pinza para acercar · toca un espacio para inspeccionar medidas</span>
+            </div>
+            <div id="cl-detail" class="text-small" aria-live="polite">Maqueta · muros recortados para ver el mobiliario.</div>
+            <div class="sr-only">Modelo conceptual basado en el mapeado adjunto y las correcciones del usuario. Lote rectangular de ancho exterior constante de 4 metros y fondo de 13,50 metros. Todas las vistas usan proyección ortográfica, sin perspectiva. Solo el portón doble abre hacia la calle; las puertas de una hoja abren hacia adentro. Auto centrado con el portón vehicular. Clóset de tres puertas dentro del dormitorio y televisor pequeño en la pared frente a los pies de la cama. Ventana de la cocina hacia el garaje de 1,50 por 0,90 metros sobre el mesón; se conserva la ventana interior del dormitorio. Los muros laterales y posterior no tienen ventanas. Alturas, cubierta y acabados requieren confirmación. Refrigeradora desplazada 30 centímetros a la izquierda para evitar solape con cocineta.</div>
+        </div>
     </section>
 
     <!-- =======================================================================
@@ -160,7 +224,7 @@
             </div>
 
             <div class="filter-tabs" role="tablist">
-                <button type="button" class="filter-btn active" data-filter="todos">Todos (6)</button>
+                <button type="button" class="filter-btn active" data-filter="todos">Todos (7)</button>
                 <button type="button" class="filter-btn" data-filter="residencial">Residencial</button>
                 <button type="button" class="filter-btn" data-filter="corporativo">Corporativo</button>
                 <button type="button" class="filter-btn" data-filter="cultural">Cultural</button>
@@ -173,11 +237,66 @@
                     <div>
                         <div class="project-image-wrap">
                             <img
+                                src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                                alt="Casa Luis López · Modelo 3D"
+                                loading="lazy"
+                            >
+                            <span class="project-code-badge">ARQ-01</span>
+                            <span class="project-status-badge">Modelo BIM 3D Interactivo</span>
+                        </div>
+
+                        <div class="project-body">
+                            <div class="project-meta-top">
+                                <span>Vivienda Unifamiliar Compacta</span>
+                                <span>Lote Rectangular 4,00 × 13,50 m · 2026</span>
+                            </div>
+
+                            <h3 class="project-title">Casa Luis López · Modelo 3D</h3>
+                            <p class="project-summary">Vivienda funcional en lote rectangular de 4,00 × 13,50 m. Distribución de fondo a frente: baño y lavandería abierta, dormitorio con clóset de tres puertas y TV, área social integrada (sala, comedor y cocina con ventana al garaje) y garaje descubierto con portón doble.</p>
+
+                            <div class="project-metrics-row">
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">4,00 × 13,50 m</span>
+                                        <span class="metric-lbl">Dimensiones Lote</span>
+                                    </div>
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">34,20 m²</span>
+                                        <span class="metric-lbl">Área Construida</span>
+                                    </div>
+                                                                    <div class="metric-cell">
+                                        <span class="metric-val">4,00 × 4,95 m</span>
+                                        <span class="metric-lbl">Garaje Frontal</span>
+                                    </div>
+                                                            </div>
+
+                            <div class="project-card-actions">
+                                <button
+                                    type="button"
+                                    class="btn-card-3d"
+                                    data-preset-3d="casa_luis_lopez"
+                                >
+                                     Cargar Volumetría 3D ↑
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn-card-details"
+                                    data-project='{&quot;id&quot;:&quot;casa-luis-lopez&quot;,&quot;code&quot;:&quot;ARQ-01&quot;,&quot;title&quot;:&quot;Casa Luis López · Modelo 3D&quot;,&quot;category&quot;:&quot;residencial&quot;,&quot;category_label&quot;:&quot;Vivienda Unifamiliar Compacta&quot;,&quot;location&quot;:&quot;Lote Rectangular 4,00 × 13,50 m&quot;,&quot;year&quot;:&quot;2026&quot;,&quot;area&quot;:&quot;34.20 m² construidos (Lote 54.00 m²)&quot;,&quot;levels&quot;:&quot;1 Nivel · Sección N+2.80 m + Garaje Descubierto&quot;,&quot;client&quot;:&quot;Luis López&quot;,&quot;status&quot;:&quot;Modelo BIM 3D Interactivo&quot;,&quot;featured&quot;:true,&quot;preset_3d&quot;:&quot;casa_luis_lopez&quot;,&quot;summary&quot;:&quot;Vivienda funcional en lote rectangular de 4,00 × 13,50 m. Distribución de fondo a frente: baño y lavandería abierta, dormitorio con clóset de tres puertas y TV, área social integrada (sala, comedor y cocina con ventana al garaje) y garaje descubierto con portón doble.&quot;,&quot;materials&quot;:[&quot;Muros Enlucidos N+2.80m&quot;,&quot;Piso Porcelanato &amp; Madera&quot;,&quot;Carpintería Metálica y Madera&quot;,&quot;Mesón de Piedra \/ Granito&quot;],&quot;sustainability&quot;:&quot;Ventilación e Iluminación Natural Cruzada · Optimización Espacial en Lote Estrecho de 4,00 m&quot;,&quot;image&quot;:&quot;https:\/\/images.unsplash.com\/photo-1600585154526-990dced4db0d?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;,&quot;gallery&quot;:[&quot;https:\/\/images.unsplash.com\/photo-1600585154526-990dced4db0d?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;],&quot;metrics&quot;:{&quot;Dimensiones Lote&quot;:&quot;4,00 × 13,50 m&quot;,&quot;Área Construida&quot;:&quot;34,20 m²&quot;,&quot;Garaje Frontal&quot;:&quot;4,00 × 4,95 m&quot;}}'
+                                >
+                                    Ficha Técnica
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                            <article class="project-card" data-category="residencial">
+                    <div>
+                        <div class="project-image-wrap">
+                            <img
                                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
                                 alt="Pabellón Aura &amp; Residencia Kengo"
                                 loading="lazy"
                             >
-                            <span class="project-code-badge">ARQ-01</span>
+                            <span class="project-code-badge">ARQ-02</span>
                             <span class="project-status-badge">Construido</span>
                         </div>
 
@@ -216,7 +335,7 @@
                                 <button
                                     type="button"
                                     class="btn-card-details"
-                                    data-project='{&quot;id&quot;:&quot;pabellon-aura&quot;,&quot;code&quot;:&quot;ARQ-01&quot;,&quot;title&quot;:&quot;Pabellón Aura &amp; Residencia Kengo&quot;,&quot;category&quot;:&quot;residencial&quot;,&quot;category_label&quot;:&quot;Residencial Contemporáneo&quot;,&quot;location&quot;:&quot;Valle de Bravo, México&quot;,&quot;year&quot;:&quot;2026&quot;,&quot;area&quot;:&quot;680 m²&quot;,&quot;levels&quot;:&quot;3 Niveles + Terraza Mirador&quot;,&quot;client&quot;:&quot;Colección Privada&quot;,&quot;status&quot;:&quot;Construido&quot;,&quot;featured&quot;:true,&quot;preset_3d&quot;:&quot;cantilever_villa&quot;,&quot;summary&quot;:&quot;Volúmenes en voladizo de hormigón arquitectónico aparente y madera carbonizada que levitan sobre una pendiente boscosa con espejo de agua perimetral.&quot;,&quot;materials&quot;:[&quot;Hormigón Blanco Aparente&quot;,&quot;Acero Corten&quot;,&quot;Cristal Low-E Triple&quot;,&quot;Roble Ahumado&quot;],&quot;sustainability&quot;:&quot;Certificación LEED Platinum · Captación Pluvial 100% · Geotermia Horizontal&quot;,&quot;image&quot;:&quot;https:\/\/images.unsplash.com\/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;,&quot;gallery&quot;:[&quot;https:\/\/images.unsplash.com\/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;,&quot;https:\/\/images.unsplash.com\/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;],&quot;metrics&quot;:{&quot;Luz Libre Voladizo&quot;:&quot;11.4 m&quot;,&quot;Eficiencia Térmica&quot;:&quot;+42%&quot;,&quot;Huella Acristalada&quot;:&quot;68%&quot;}}'
+                                    data-project='{&quot;id&quot;:&quot;pabellon-aura&quot;,&quot;code&quot;:&quot;ARQ-02&quot;,&quot;title&quot;:&quot;Pabellón Aura &amp; Residencia Kengo&quot;,&quot;category&quot;:&quot;residencial&quot;,&quot;category_label&quot;:&quot;Residencial Contemporáneo&quot;,&quot;location&quot;:&quot;Valle de Bravo, México&quot;,&quot;year&quot;:&quot;2026&quot;,&quot;area&quot;:&quot;680 m²&quot;,&quot;levels&quot;:&quot;3 Niveles + Terraza Mirador&quot;,&quot;client&quot;:&quot;Colección Privada&quot;,&quot;status&quot;:&quot;Construido&quot;,&quot;featured&quot;:true,&quot;preset_3d&quot;:&quot;cantilever_villa&quot;,&quot;summary&quot;:&quot;Volúmenes en voladizo de hormigón arquitectónico aparente y madera carbonizada que levitan sobre una pendiente boscosa con espejo de agua perimetral.&quot;,&quot;materials&quot;:[&quot;Hormigón Blanco Aparente&quot;,&quot;Acero Corten&quot;,&quot;Cristal Low-E Triple&quot;,&quot;Roble Ahumado&quot;],&quot;sustainability&quot;:&quot;Certificación LEED Platinum · Captación Pluvial 100% · Geotermia Horizontal&quot;,&quot;image&quot;:&quot;https:\/\/images.unsplash.com\/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;,&quot;gallery&quot;:[&quot;https:\/\/images.unsplash.com\/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;,&quot;https:\/\/images.unsplash.com\/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;],&quot;metrics&quot;:{&quot;Luz Libre Voladizo&quot;:&quot;11.4 m&quot;,&quot;Eficiencia Térmica&quot;:&quot;+42%&quot;,&quot;Huella Acristalada&quot;:&quot;68%&quot;}}'
                                 >
                                     Ficha Técnica
                                 </button>
@@ -585,8 +704,10 @@
         </div>
     </footer>
 
-    <!-- Three.js CDN + Escena Arquitectónica 3D -->
+    <!-- Three.js CDN + Escena Arquitectónica 3D + Modelo Interactivo Casa Luis López -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="assets/js/arch-scene-3d.js"></script>
+    <script src="assets/js/casa-lopez-3d.js"></script>
 </body>
 </html>
+

@@ -170,7 +170,55 @@
         clearBuilding();
         currentPreset = preset;
 
-        if (preset === 'diagrid_tower') {
+        if (preset === 'casa_luis_lopez') {
+            // Casa Luis López · Lote 4,00 × 13,50 m (escalado ×1.35 para protagonismo en el Hero)
+            const s = 1.35;
+            const oz = -6.75 * s;
+            const ox = -2.0 * s;
+
+            // Lote base y vereda
+            addPart(new THREE.BoxGeometry(4.0 * s, 0.25, 13.5 * s), materials.darkConcrete, 0, 0.12, 0, { x: 0, y: -0.6, z: 0 });
+            addPart(new THREE.BoxGeometry(4.0 * s, 0.28, 8.55 * s), materials.concrete, 0, 0.32, oz + 4.275 * s, { x: 0, y: -0.3, z: 0 });
+            // Piso madera dormitorio
+            addPart(new THREE.BoxGeometry(2.9 * s, 0.08, 2.84 * s), materials.wood, ox + 2.5 * s, 0.48, oz + 3.68 * s, { x: 0, y: 0.2, z: 0 });
+
+            // Muros perimetrales y divisorios (N+2.80m)
+            const wallH = 2.6 * s;
+            const wallY = 0.45 + wallH / 2;
+            // Muro posterior (z=0.05) y laterales (x=0.05, x=3.95)
+            addPart(new THREE.BoxGeometry(4.0 * s, wallH, 0.12 * s), materials.concrete, 0, wallY, oz + 0.05 * s, { x: 0, y: 1.4, z: -1.8 });
+            addPart(new THREE.BoxGeometry(0.12 * s, wallH, 13.5 * s), materials.concrete, ox + 0.05 * s, wallY, 0, { x: -2.2, y: 1.4, z: 0 });
+            addPart(new THREE.BoxGeometry(0.12 * s, wallH, 13.5 * s), materials.concrete, ox + 3.95 * s, wallY, 0, { x: 2.2, y: 1.4, z: 0 });
+
+            // Muro fachada interior (z=8.55) con ventana cocina -> garaje
+            addPart(new THREE.BoxGeometry(4.0 * s, 1.2 * s, 0.12 * s), materials.concrete, 0, 0.45 + 0.6 * s, oz + 8.55 * s, { x: 0, y: 1.2, z: 0.6 });
+            addPart(new THREE.BoxGeometry(1.5 * s, 0.9 * s, 0.08 * s), materials.glass, ox + 2.8 * s, 0.45 + 1.65 * s, oz + 8.55 * s, { x: 0, y: 2.0, z: 1.2 }, false);
+
+            // Divisiones interiores: Baño/Lavandería (z=1.4), Dormitorio (z=2.2 a 5.15, x=1.0)
+            addPart(new THREE.BoxGeometry(2.15 * s, wallH * 0.85, 0.12 * s), materials.concrete, ox + 1.075 * s, wallY - 0.2, oz + 1.4 * s, { x: -0.8, y: 1.8, z: -0.8 });
+            addPart(new THREE.BoxGeometry(0.12 * s, wallH * 0.85, 2.95 * s), materials.concrete, ox + 1.0 * s, wallY - 0.2, oz + 3.675 * s, { x: -1.0, y: 1.8, z: 0 });
+            addPart(new THREE.BoxGeometry(3.0 * s, wallH * 0.85, 0.12 * s), materials.concrete, ox + 2.5 * s, wallY - 0.2, oz + 2.2 * s, { x: 0.8, y: 1.8, z: -0.4 });
+            addPart(new THREE.BoxGeometry(3.0 * s, wallH * 0.85, 0.12 * s), materials.concrete, ox + 2.5 * s, wallY - 0.2, oz + 5.15 * s, { x: 0.8, y: 1.8, z: 0.4 });
+
+            // Mobiliario interior iluminado (Cama, Clóset, Sala/Comedor/Cocina, Baño)
+            addPart(new THREE.BoxGeometry(2.1 * s, 0.55 * s, 1.5 * s), materials.warmGlow, ox + 2.2 * s, 0.75, oz + 3.5 * s, { x: 0.5, y: 0.8, z: 0 });
+            addPart(new THREE.BoxGeometry(1.85 * s, 2.0 * s, 0.5 * s), materials.wood, ox + 2.95 * s, 0.45 + 1.0 * s, oz + 4.85 * s, { x: 1.0, y: 1.2, z: 0 });
+            addPart(new THREE.BoxGeometry(0.65 * s, 0.7 * s, 1.8 * s), materials.wood, ox + 0.4 * s, 0.8, oz + 5.9 * s, { x: -0.8, y: 0.9, z: 0.4 });
+            addPart(new THREE.BoxGeometry(1.0 * s, 0.75 * s, 0.8 * s), materials.warmGlow, ox + 1.9 * s, 0.85, oz + 7.0 * s, { x: 0, y: 1.0, z: 0.6 });
+            addPart(new THREE.BoxGeometry(1.5 * s, 0.9 * s, 0.6 * s), materials.bronze, ox + 2.75 * s, 0.9, oz + 8.2 * s, { x: 0.8, y: 1.0, z: 0.8 });
+
+            // Portón vehicular doble y acceso peatonal en fachada (z=13.45)
+            addPart(new THREE.BoxGeometry(1.2 * s, 2.1 * s, 0.1 * s), materials.wood, ox + 0.75 * s, 0.45 + 1.05 * s, oz + 13.45 * s, { x: -1.2, y: 1.0, z: 2.2 });
+            addPart(new THREE.BoxGeometry(2.4 * s, 2.1 * s, 0.1 * s), materials.bronze, ox + 2.55 * s, 0.45 + 1.05 * s, oz + 13.45 * s, { x: 1.2, y: 1.0, z: 2.5 });
+
+            // Vehículo en garaje descubierto (centrado con portón doble)
+            addPart(new THREE.BoxGeometry(1.68 * s, 0.65 * s, 4.16 * s), materials.bronze, ox + 2.55 * s, 0.75, oz + 11.0 * s, { x: 1.4, y: 0.8, z: 1.8 });
+            addPart(new THREE.BoxGeometry(1.45 * s, 0.55 * s, 2.1 * s), materials.glass, ox + 2.55 * s, 1.35, oz + 10.85 * s, { x: 1.4, y: 1.4, z: 1.8 }, false);
+
+            // Cubierta superior / Losa + parapeto (se eleva en modo Corte Explotado)
+            addPart(new THREE.BoxGeometry(4.0 * s, 0.22 * s, 8.6 * s), materials.concrete, 0, 0.45 + wallH + 0.12, oz + 4.3 * s, { x: 0, y: 4.5, z: 0 });
+            addPart(new THREE.BoxGeometry(4.08 * s, 0.35 * s, 8.68 * s), materials.bronze, 0, 0.45 + wallH + 0.38, oz + 4.3 * s, { x: 0, y: 5.2, z: 0 });
+        } else if (preset === 'diagrid_tower') {
             // Torre Bioclimática Prisma Nord
             addPart(new THREE.BoxGeometry(11, 0.6, 11), materials.darkConcrete, 0, 0.3, 0, { x: 0, y: -0.5, z: 0 });
             const floors = 8;
@@ -278,7 +326,7 @@
         }
     }
 
-    buildArchitecturalModel('cantilever_villa');
+    buildArchitecturalModel('casa_luis_lopez');
 
     // --- 6. Interacción con el Mouse, Auto-Rotación y Controles HUD ---
     let isDragging = false;
@@ -440,9 +488,14 @@
             buildArchitecturalModel(preset);
             setPresetActiveUI(preset);
 
-            // Si el clic viene de una tarjeta de proyecto abajo, subir suavemente al visor 3D
+            // Si el clic viene de una tarjeta de proyecto abajo, subir al visor correspondiente
             if (btn.classList.contains('btn-card-3d')) {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                const casaSection = document.getElementById('casa-lopez-seccion');
+                if (preset === 'casa_luis_lopez' && casaSection) {
+                    casaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
             }
         });
     });

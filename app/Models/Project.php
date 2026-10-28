@@ -12,8 +12,35 @@ class Project
     {
         return [
             [
-                'id' => 'pabellon-aura',
+                'id' => 'casa-luis-lopez',
                 'code' => 'ARQ-01',
+                'title' => 'Casa Luis López · Modelo 3D',
+                'category' => 'residencial',
+                'category_label' => 'Vivienda Unifamiliar Compacta',
+                'location' => 'Lote Rectangular 4,00 × 13,50 m',
+                'year' => '2026',
+                'area' => '34.20 m² construidos (Lote 54.00 m²)',
+                'levels' => '1 Nivel · Sección N+2.80 m + Garaje Descubierto',
+                'client' => 'Luis López',
+                'status' => 'Modelo BIM 3D Interactivo',
+                'featured' => true,
+                'preset_3d' => 'casa_luis_lopez',
+                'summary' => 'Vivienda funcional en lote rectangular de 4,00 × 13,50 m. Distribución de fondo a frente: baño y lavandería abierta, dormitorio con clóset de tres puertas y TV, área social integrada (sala, comedor y cocina con ventana al garaje) y garaje descubierto con portón doble.',
+                'materials' => ['Muros Enlucidos N+2.80m', 'Piso Porcelanato & Madera', 'Carpintería Metálica y Madera', 'Mesón de Piedra / Granito'],
+                'sustainability' => 'Ventilación e Iluminación Natural Cruzada · Optimización Espacial en Lote Estrecho de 4,00 m',
+                'image' => 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=85',
+                'gallery' => [
+                    'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=85'
+                ],
+                'metrics' => [
+                    'Dimensiones Lote' => '4,00 × 13,50 m',
+                    'Área Construida' => '34,20 m²',
+                    'Garaje Frontal' => '4,00 × 4,95 m'
+                ]
+            ],
+            [
+                'id' => 'pabellon-aura',
+                'code' => 'ARQ-02',
                 'title' => 'Pabellón Aura & Residencia Kengo',
                 'category' => 'residencial',
                 'category_label' => 'Residencial Contemporáneo',

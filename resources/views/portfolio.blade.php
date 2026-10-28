@@ -29,6 +29,7 @@
         </a>
 
         <ul class="nav-links">
+            <li><a href="#casa-lopez-seccion">Casa Luis López 3D</a></li>
             <li><a href="#visor-3d">Escena 3D</a></li>
             <li><a href="#obras">Proyectos</a></li>
             <li><a href="#metodologia">Metodología BIM</a></li>
@@ -62,8 +63,8 @@
             </p>
 
             <div class="hero-actions">
-                <a href="#obras" class="btn-primary">Explorar Obras Selectas ↓</a>
-                <a href="#metodologia" class="btn-outline">Arquitectura Laravel + 3D</a>
+                <a href="#casa-lopez-seccion" class="btn-primary">Explorar Casa Luis López 3D ↓</a>
+                <a href="#obras" class="btn-outline">Ver Portafolio de Obras</a>
             </div>
         </div>
 
@@ -110,7 +111,10 @@
             </div>
 
             <div class="hud-preset-bar">
-                <button type="button" class="preset-chip active" data-preset-3d="cantilever_villa">
+                <button type="button" class="preset-chip active" data-preset-3d="casa_luis_lopez">
+                    Casa Luis López (4×13,5m)
+                </button>
+                <button type="button" class="preset-chip" data-preset-3d="cantilever_villa">
                     Pabellón Aura (Voladizo)
                 </button>
                 <button type="button" class="preset-chip" data-preset-3d="diagrid_tower">
@@ -121,6 +125,66 @@
                 </button>
             </div>
         </aside>
+    </section>
+
+    <!-- =======================================================================
+         MAQUETA INTERACTIVA 3D — CASA LUIS LÓPEZ (LOTE 4,00 × 13,50 M)
+         ======================================================================= -->
+    <section class="casa-lopez-showcase" id="casa-lopez-seccion">
+        <div id="casa-lopez-modelo">
+            <div class="viz-row">
+                <div>
+                    <div class="section-eyebrow" style="margin-bottom:0.25rem;">// PLANO Y MAQUETA INTERACTIVA EN TIEMPO REAL · PROYECCIÓN ORTOGRÁFICA</div>
+                    <h2>Casa Luis Lopez · modelo 3D</h2>
+                </div>
+                <span class="cl-badge-lot">Lote rectangular · 4,00 × 13,50 m · construcción 34,20 m²</span>
+            </div>
+
+            <div class="viz-controls">
+                <label class="form-label">Vista Arquitectónica
+                    <select class="form-select" id="cl-vista" aria-label="Vista del modelo">
+                        <option value="planta">Planta rectangular</option>
+                        <option value="maqueta">3D sin perspectiva</option>
+                        <option value="fachada">Fachada a la calle</option>
+                        <option value="dormitorio">Dormitorio y televisor</option>
+                        <option value="social">Sala · comedor · cocina</option>
+                        <option value="cocina">Ventana cocina → garaje</option>
+                        <option value="servicios">Baño · lavandería</option>
+                    </select>
+                </label>
+                <button class="btn" type="button" id="cl-rotate" aria-pressed="false">Girar</button>
+                <button class="btn" type="button" id="cl-in" aria-label="Acercar modelo">+</button>
+                <button class="btn" type="button" id="cl-out" aria-label="Alejar modelo">−</button>
+            </div>
+
+            <div class="cl-quick-views" role="group" aria-label="Accesos rápidos de cámara">
+                <button type="button" class="cl-view-chip active" data-cl-view="planta">Planta rectangular</button>
+                <button type="button" class="cl-view-chip" data-cl-view="maqueta">3D sin perspectiva</button>
+                <button type="button" class="cl-view-chip" data-cl-view="fachada">Fachada a la calle</button>
+                <button type="button" class="cl-view-chip" data-cl-view="dormitorio">Dormitorio y TV</button>
+                <button type="button" class="cl-view-chip" data-cl-view="social">Sala · comedor · cocina</button>
+                <button type="button" class="cl-view-chip" data-cl-view="cocina">Ventana cocina → garaje</button>
+                <button type="button" class="cl-view-chip" data-cl-view="servicios">Baño · lavandería</button>
+            </div>
+
+            <div class="viz-controls cl-options">
+                <label class="form-check"><input id="cl-roof" class="form-check-input" type="checkbox"><span class="form-check-label">Techo</span></label>
+                <label class="form-check"><input id="cl-cut" class="form-check-input" type="checkbox" checked><span class="form-check-label">Recortar muros</span></label>
+                <label class="form-check"><input id="cl-doors" class="form-check-input" type="checkbox" checked><span class="form-check-label">Abrir puertas</span></label>
+                <label class="form-check"><input id="cl-dims" class="form-check-input" type="checkbox"><span class="form-check-label">Cotas y nombres</span></label>
+            </div>
+
+            <div id="cl-scene" role="img" aria-label="Modelo tridimensional de vivienda en lote de 4 por 13,50 metros. De fondo a frente: baño y lavandería, dormitorio con pasillo izquierdo, sala comedor cocina y garaje. Arrastrar para girar; rueda o gesto de pinza para acercar. Las vistas también se seleccionan con los controles.">
+                <div id="cl-loading" class="text-small" role="status">Cargando modelo 3D…</div>
+                <div id="cl-labels" aria-hidden="true"></div>
+            </div>
+
+            <div class="viz-row cl-caption">
+                <span class="text-small text-muted">Arrastra para girar · rueda / pinza para acercar · toca un espacio para inspeccionar medidas</span>
+            </div>
+            <div id="cl-detail" class="text-small" aria-live="polite">Maqueta · muros recortados para ver el mobiliario.</div>
+            <div class="sr-only">Modelo conceptual basado en el mapeado adjunto y las correcciones del usuario. Lote rectangular de ancho exterior constante de 4 metros y fondo de 13,50 metros. Todas las vistas usan proyección ortográfica, sin perspectiva. Solo el portón doble abre hacia la calle; las puertas de una hoja abren hacia adentro. Auto centrado con el portón vehicular. Clóset de tres puertas dentro del dormitorio y televisor pequeño en la pared frente a los pies de la cama. Ventana de la cocina hacia el garaje de 1,50 por 0,90 metros sobre el mesón; se conserva la ventana interior del dormitorio. Los muros laterales y posterior no tienen ventanas. Alturas, cubierta y acabados requieren confirmación. Refrigeradora desplazada 30 centímetros a la izquierda para evitar solape con cocineta.</div>
+        </div>
     </section>
 
     <!-- =======================================================================
@@ -293,9 +357,10 @@
         </div>
     </footer>
 
-    <!-- Three.js CDN + Escena Arquitectónica 3D -->
+    <!-- Three.js CDN + Escena Arquitectónica 3D + Modelo Interactivo Casa Luis López -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="assets/js/arch-scene-3d.js"></script>
+    <script src="assets/js/casa-lopez-3d.js"></script>
 </body>
 </html>
 
